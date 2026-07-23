@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "userId": 1,
+    "roleId": 1,
+    "assignedAt": "2026-07-15T15:32:14.653Z"
+  },
+  {
+    "id": 2,
+    "userId": 3,
+    "roleId": 1,
+    "assignedAt": "2026-07-16T06:03:00.107Z"
+  },
+  {
+    "id": 3,
+    "userId": 4,
+    "roleId": 3,
+    "assignedAt": "2026-07-20T08:51:06.945Z"
+  }
+]

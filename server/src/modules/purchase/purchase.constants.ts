@@ -1,0 +1,16 @@
+export const PURCHASE_MESSAGES = {
+  CREATED: "Purchase created successfully.",
+  UPDATED: "Purchase updated successfully.",
+  DELETED: "Purchase deleted successfully.",
+  NOT_FOUND: "Purchase not found.",
+  FETCHED: "Purchases fetched successfully.",
+  FETCHED_ONE: "Purchase fetched successfully.",
+  DUPLICATE_NUMBER: "Purchase with this number already exists.",
+  SUPPLIER_NOT_FOUND: "The specified supplier does not exist or is inactive.",
+  CANNOT_EDIT_COMPLETED: "Cannot edit or delete a purchase that is already RECEIVED or CANCELLED.",
+  ALREADY_RECEIVED: "Purchase has already been received.",
+  ALREADY_CANCELLED: "Purchase has been cancelled.",
+  NOT_PENDING: "Only pending purchases can be received.",
+  NO_ITEMS: "Purchase must contain at least one item.",
+  RECEIVED_SUCCESS: "Purchase received successfully.",
+} as const;

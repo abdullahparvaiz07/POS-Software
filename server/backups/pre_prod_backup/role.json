@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "name": "ADMIN",
+    "description": null,
+    "permissions": null,
+    "isSystem": true,
+    "isActive": true,
+    "createdAt": "2026-07-15T15:32:14.346Z",
+    "updatedAt": "2026-07-15T15:32:14.346Z"
+  },
+  {
+    "id": 2,
+    "name": "MANAGER",
+    "description": null,
+    "permissions": null,
+    "isSystem": true,
+    "isActive": true,
+    "createdAt": "2026-07-15T15:32:14.432Z",
+    "updatedAt": "2026-07-15T15:32:14.432Z"
+  },
+  {
+    "id": 3,
+    "name": "CASHIER",
+    "description": null,
+    "permissions": null,
+    "isSystem": true,
+    "isActive": true,
+    "createdAt": "2026-07-15T15:32:14.439Z",
+    "updatedAt": "2026-07-15T15:32:14.439Z"
+  },
+  {
+    "id": 4,
+    "name": "WAITER",
+    "description": null,
+    "permissions": null,
+    "isSystem": true,
+    "isActive": true,
+    "createdAt": "2026-07-15T15:32:14.446Z",
+    "updatedAt": "2026-07-15T15:32:14.446Z"
+  },
+  {
+    "id": 5,
+    "name": "RIDER",
+    "description": null,
+    "permissions": null,
+    "isSystem": true,
+    "isActive": true,
+    "createdAt": "2026-07-15T15:32:14.453Z",
+    "updatedAt": "2026-07-15T15:32:14.453Z"
+  },
+  {
+    "id": 6,
+    "name": "KITCHEN",
+    "description": null,
+    "permissions": null,
+    "isSystem": true,
+    "isActive": true,
+    "createdAt": "2026-07-15T15:32:14.461Z",
+    "updatedAt": "2026-07-15T15:32:14.461Z"
+  },
+  {
+    "id": 7,
+    "name": "BAR",
+    "description": null,
+    "permissions": null,
+    "isSystem": true,
+    "isActive": true,
+    "createdAt": "2026-07-15T15:32:14.468Z",
+    "updatedAt": "2026-07-15T15:32:14.468Z"
+  },
+  {
+    "id": 8,
+    "name": "CHEF",
+    "description": "CHEF Role",
+    "permissions": null,
+    "isSystem": true,
+    "isActive": true,
+    "createdAt": "2026-07-16T06:02:59.804Z",
+    "updatedAt": "2026-07-16T06:02:59.804Z"
+  },
+  {
+    "id": 9,
+    "name": "BARTENDER",
+    "description": "BARTENDER Role",
+    "permissions": null,
+    "isSystem": true,
+    "isActive": true,
+    "createdAt": "2026-07-16T06:02:59.831Z",
+    "updatedAt": "2026-07-16T06:02:59.831Z"
+  }
+]

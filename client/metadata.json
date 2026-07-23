@@ -1,0 +1,6 @@
+{
+  "name": "Restaurant POS",
+  "description": "A comprehensive real-time restaurant POS system dashboard featuring sales analysis, order tracking, and live department summaries.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

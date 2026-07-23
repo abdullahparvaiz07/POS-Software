@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "name": "Burgers 1784129538185",
+    "slug": "burgers-1784129538185",
+    "description": "Delicious handmade burgers",
+    "icon": null,
+    "color": null,
+    "image": null,
+    "displayOrder": 0,
+    "isActive": true,
+    "createdBy": 1,
+    "updatedBy": 1,
+    "createdAt": "2026-07-15T15:32:18.188Z",
+    "updatedAt": "2026-07-15T15:32:18.188Z",
+    "deletedAt": null
+  },
+  {
+    "id": 2,
+    "name": "Burgers 1784129605986",
+    "slug": "burgers-1784129605986",
+    "description": "Delicious handmade burgers",
+    "icon": null,
+    "color": null,
+    "image": null,
+    "displayOrder": 0,
+    "isActive": true,
+    "createdBy": 1,
+    "updatedBy": 1,
+    "createdAt": "2026-07-15T15:33:26.011Z",
+    "updatedAt": "2026-07-15T15:33:26.097Z",
+    "deletedAt": "2026-07-15T15:33:26.093Z"
+  },
+  {
+    "id": 3,
+    "name": "Pizzas 1784131021442",
+    "slug": "pizzas-1784131021442",
+    "description": null,
+    "icon": null,
+    "color": null,
+    "image": null,
+    "displayOrder": 0,
+    "isActive": true,
+    "createdBy": 1,
+    "updatedBy": 1,
+    "createdAt": "2026-07-15T15:57:02.047Z",
+    "updatedAt": "2026-07-15T15:57:02.129Z",
+    "deletedAt": "2026-07-15T15:57:02.127Z"
+  }
+]

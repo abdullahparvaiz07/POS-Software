@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "categoryId": 2,
+    "name": "Classic Cheeseburger 1784129606031",
+    "slug": "classic-cheeseburger-1784129606031",
+    "sku": "B-6031",
+    "description": null,
+    "image": null,
+    "preparationArea": "KITCHEN",
+    "pricingMode": "SINGLE_PRICE",
+    "isAvailable": true,
+    "displayOrder": 0,
+    "createdBy": 1,
+    "updatedBy": 1,
+    "createdAt": "2026-07-15T15:33:26.033Z",
+    "updatedAt": "2026-07-15T15:33:26.033Z",
+    "deletedAt": null
+  },
+  {
+    "id": 2,
+    "categoryId": 3,
+    "name": "Fajita Pizza 1784131021442",
+    "slug": "fajita-pizza-1784131021442",
+    "sku": "PZ-1442",
+    "description": null,
+    "image": null,
+    "preparationArea": "KITCHEN",
+    "pricingMode": "MULTIPLE_VARIANTS",
+    "isAvailable": true,
+    "displayOrder": 0,
+    "createdBy": 1,
+    "updatedBy": 1,
+    "createdAt": "2026-07-15T15:57:02.058Z",
+    "updatedAt": "2026-07-15T15:57:02.058Z",
+    "deletedAt": null
+  }
+]

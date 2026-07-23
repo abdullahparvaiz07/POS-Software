@@ -1,0 +1,108 @@
+Created At: 2026-07-21T10:27:44Z
+Completed At: 2026-07-21T10:27:45Z
+File Path: `file:///x:/Internship%20Projects/restaurant-pos/client/src/components/dashboard/MenuView.tsx`
+Total Lines: 903
+Total Bytes: 41782
+Showing lines 1 to 100
+The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.
+1: /**
+2:  * @license
+3:  * SPDX-License-Identifier: Apache-2.0
+4:  */
+5: 
+6: import React, { useState, useRef } from 'react';
+7: import { useDashboard } from '../../context/DashboardContext';
+8: import { MenuItem, Category, PreparationArea } from '../../types';
+9: import { formatPKR } from './StatisticsCards';
+10: import { 
+11:   BookOpen, Plus, Search, Filter, Edit2, Trash2, Eye, X, Check, AlertTriangle, 
+12:   Sparkles, Coffee, ChefHat, HelpCircle, Image as ImageIcon, RefreshCw, Layers
+13: } from 'lucide-react';
+14: 
+15: const PRESET_IMAGES = [
+16:   { name: 'Burger', url: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500&auto=format&fit=crop&q=60' },
+17:   { name: 'Pizza', url: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500&auto=format&fit=crop&q=60' },
+18:   { name: 'Sides/Wings', url: 'https://images.unsplash.com/photo-1567620832903-9fc6debc209f?w=500&auto=format&fit=crop&q=60' },
+19:   { name: 'Drink/Margarita', url: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=500&auto=format&fit=crop&q=60' },
+20:   { name: 'Dessert/Cake', url: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=500&auto=format&fit=crop&q=60' }
+21: ];
+22: 
+23: export const MenuView: React.FC = () => {
+24:   const { 
+25:     menuItems, 
+26:     categories, 
+27:     addMenuItem, 
+28:     updateMenuItem, 
+29:     deleteMenuItem, 
+30:     toggleMenuItemAvailability,
+31:     addNotification 
+32:   } = useDashboard();
+33: 
+34:   // Search & Filter state
+35:   const [searchTerm, setSearchTerm] = useState('');
+36:   const [categoryFilter, setCategoryFilter] = useState<string>('All');
+37:   const [prepAreaFilter, setPrepAreaFilter] = useState<string>('All');
+38:   const [availabilityFilter, setAvailabilityFilter] = useState<string>('All');
+39: 
+40:   // Modal / overlay states
+41:   const [selectedItem, setSelectedItem] = useState<MenuItem | null>(null);
+42:   const [isAddEditModalOpen, setIsAddEditModalOpen] = useState(false);
+43:   const [isViewModalOpen, setIsViewModalOpen] = useState(false);
+44:   const [isDeleteConfirmOpen, setIsDeleteConfirmOpen] = useState(false);
+45:   const [itemToDeleteId, setItemToDeleteId] = useState<number | null>(null);
+46:   const [isEditMode, setIsEditMode] = useState(false);
+47: 
+48:   // Drag & drop / upload states
+49:   const fileInputRef = useRef<HTMLInputElement>(null);
+50:   const [dragActive, setDragActive] = useState(false);
+51: 
+52:   // Form Fields
+53:   const [formData, setFormData] = useState({
+54:     name: '',
+55:     description: '',
+56:     category_id: 1,
+57:     price: 350,
+58:     preparation_area: 'Kitchen' as PreparationArea,
+59:     image: PRESET_IMAGES[0].url,
+60:     is_available: true
+61:   });
+62: 
+63:   // Calculate high-quality menu metrics
+64:   const totalItemsCount = menuItems.length;
+65:   const availableCount = menuItems.filter(item => item.is_available).length;
+66:   const unavailableCount = totalItemsCount - availableCount;
+67:   const kitchenCount = menuItems.filter(item => item.preparation_area === 'Kitchen').length;
+68:   const barCount = menuItems.filter(item => item.preparation_area === 'Bar').length;
+69: 
+70:   // Filter menu items
+71:   const filteredItems = menuItems.filter(item => {
+72:     const matchesSearch = item.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
+73:                           item.description.toLowerCase().includes(searchTerm.toLowerCase());
+74:     const matchesCategory = categoryFilter === 'All' || item.category_id === Number(categoryFilter);
+75:     const matchesPrepArea = prepAreaFilter === 'All' || item.preparation_area === prepAreaFilter;
+76:     
+77:     let matchesAvailability = true;
+78:     if (availabilityFilter === 'Available') matchesAvailability = item.is_available;
+79:     else if (availabilityFilter === 'Unavailable') matchesAvailability = !item.is_available;
+80: 
+81:     return matchesSearch && matchesCategory && matchesPrepArea && matchesAvailability;
+82:   });
+83: 
+84:   const getCategoryName = (catId: number) => {
+85:     return categories.find(c => c.id === catId)?.name || 'Unknown';
+86:   };
+87: 
+88:   // Open add modal
+89:   const handleOpenAdd = () => {
+90:     setFormData({
+91:       name: '',
+92:       description: '',
+93:       category_id: categories[0]?.id || 1,
+94:       price: 350,
+95:       preparation_area: 'Kitchen',
+96:       image: PRESET_IMAGES[0].url,
+97:       is_available: true
+98:     });
+99:     setIsEditMode(false);
+100:     setIsAddEditModalOpen(true);
+The above content does NOT show the entire file contents. If you need to view any lines of the file which were not shown to complete your task, call this tool again to view those lines.

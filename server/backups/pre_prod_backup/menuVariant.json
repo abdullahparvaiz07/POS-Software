@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "menuItemId": 2,
+    "name": "Large",
+    "price": "1650",
+    "displayOrder": 0,
+    "isDefault": true,
+    "isAvailable": true,
+    "createdBy": 1,
+    "updatedBy": 1,
+    "createdAt": "2026-07-15T15:57:02.068Z",
+    "updatedAt": "2026-07-15T15:57:02.106Z",
+    "deletedAt": null,
+    "recipeId": null
+  }
+]

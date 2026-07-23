@@ -1,0 +1,31 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Dependency directories
+node_modules/
+**/node_modules/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# dotenv environment variable files
+.env
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
+!*.env.example
+
+# Build outputs
+dist/
+**/dist/
+build/
+**/build/
+
+# IDE / System
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

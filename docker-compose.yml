@@ -1,0 +1,131 @@
+version: '3.8'
+
+services:
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    image: restaurant-pos-client:dev
+    container_name: pos_client
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./client:/app
+      - /app/node_modules
+    # Override Nginx CMD in dev, run vite dev server instead
+    command: npm run dev
+    environment:
+      - NODE_ENV=development
+    networks:
+      - restaurant-network
+    depends_on:
+      - server
+
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    image: restaurant-pos-api:dev
+    container_name: pos_server
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./server:/app
+      - /app/node_modules
+      - logs:/app/logs
+      - backups:/app/backups
+    # Override CMD to run nodemon
+    command: npm run dev
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=development
+    networks:
+      - restaurant-network
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  worker:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    image: restaurant-pos-worker:dev
+    container_name: pos_worker
+    volumes:
+      - ./server:/app
+      - /app/node_modules
+      - logs:/app/logs
+      - backups:/app/backups
+    command: npm run dev:worker
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=development
+    networks:
+      - restaurant-network
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  mysql:
+    image: mysql:8.0
+    container_name: pos_mysql
+    ports:
+      - "3306:3306"
+    env_file:
+      - .env
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./docker/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - restaurant-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:alpine
+    container_name: pos_redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - restaurant-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  nginx:
+    image: nginx:alpine
+    container_name: pos_nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - uploads:/var/www/uploads
+    networks:
+      - restaurant-network
+    depends_on:
+      - client
+      - server
+
+volumes:
+  mysql-data:
+  redis-data:
+  uploads:
+  logs:
+  backups:
+
+networks:
+  restaurant-network:
+    driver: bridge
