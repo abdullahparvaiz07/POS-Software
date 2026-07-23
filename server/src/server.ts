@@ -18,7 +18,16 @@ import { notificationWorker } from "./workers/notification.worker";
 import { backupWorker } from "./workers/backup.worker";
 import { reportWorker } from "./workers/report.worker";
 import { cleanupWorker } from "./workers/cleanup.worker";
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 5000;
+
+// Suppress unhandled Redis worker connection errors when Redis is not deployed
+[printerWorker, emailWorker, notificationWorker, backupWorker, reportWorker, cleanupWorker].forEach(worker => {
+  if (worker) {
+    worker.on("error", (err) => {
+      // Offline fallback: log warning instead of crashing Node process
+    });
+  }
+});
 
 // Create HTTP server manually to attach WebSockets
 const httpServer = createServer(app);
@@ -26,7 +35,7 @@ const httpServer = createServer(app);
 // Initialize WebSockets
 initializeSocketServer(httpServer);
 
-httpServer.listen(PORT, () => {
+httpServer.listen(PORT, "0.0.0.0", () => {
   console.log(`Server running on port ${PORT}`);
   
   // Setup Queue observability

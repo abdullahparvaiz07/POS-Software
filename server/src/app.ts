@@ -67,9 +67,11 @@ app.use(
   })
 );
 
+const allowedOrigin = process.env.CORS_ORIGIN || process.env.FRONTEND_URL || "*";
+
 app.use(
   cors({
-    origin: isProduction ? process.env.FRONTEND_URL || "https://restaurant-pos.local" : "*",
+    origin: allowedOrigin === "*" ? true : allowedOrigin,
     credentials: true,
   })
 );
