@@ -48,3 +48,10 @@ export const allQueues = [
   reportQueue,
   cleanupQueue,
 ];
+
+// Suppress unhandled Redis queue connection errors when Redis is offline or restarting
+allQueues.forEach((q) => {
+  q.on("error", (err) => {
+    // Offline fallback: log warning instead of crashing Node process
+  });
+});

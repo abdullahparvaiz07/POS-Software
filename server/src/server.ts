@@ -77,5 +77,13 @@ const shutdown = async (signal: string) => {
   }
 };
 
+process.on("uncaughtException", (err) => {
+  console.error("[Server] Uncaught Exception:", err);
+});
+
+process.on("unhandledRejection", (reason) => {
+  console.error("[Server] Unhandled Rejection:", reason);
+});
+
 process.on("SIGTERM", () => shutdown("SIGTERM"));
 process.on("SIGINT", () => shutdown("SIGINT"));
